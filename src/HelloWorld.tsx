@@ -4,7 +4,7 @@ export default function HelloWorld() {
 
     if(name === 'Daniel') {
         return <div>
-            <h1 style={{background: 'red'}}>{name}</h1>
+            <h1 tabIndex={0} style={{background: 'red'}}>{name}</h1>
         </div>
     }
 
