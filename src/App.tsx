@@ -1,16 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
-import HelloWorld from "./HelloWorld";
-import Clock from "./Clock";
-import Person from "./Person";
+import Post from "./components/Post";
+import SideBar from "./components/SideBar";
+import Card from "./components/Card";
 
 function App() {
+
+    const [post] = useState({
+        title: 'Titulo maneiro',
+        content: 'Lorem Ipsum dolor sit amet'
+    })
+
     return (
         <div className="App">
             <header className="App-header">
-                <Clock/>
-                <Person/>
+                <Card>
+                    <Post post={post} totalComments={12}/>
+                </Card>
             </header>
         </div>
     );
