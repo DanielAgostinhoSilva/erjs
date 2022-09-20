@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import './App.css';
 import Post from "./components/Post";
-import SideBar from "./components/SideBar";
 import Card from "./components/Card";
 
 function App() {
