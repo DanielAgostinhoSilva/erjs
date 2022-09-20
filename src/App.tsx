@@ -14,7 +14,7 @@ function App() {
     return (
         <div className="App">
             <header className="App-header">
-                <Card align={"center"}>
+                <Card title={'card'}>
                     <Post post={post} totalComments={12}/>
                 </Card>
             </header>
