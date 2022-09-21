@@ -13,13 +13,14 @@ class Button extends Component<ButtonProps, ButtonState> {
 
     constructor(props: ButtonProps) {
         super(props);
+        console.log('constructor')
         this.state = {
             alreadyClicked: !!props.initializedClicked
         }
     }
 
     render() {
-        console.log(this.props)
+        console.log('render')
 
         return <button
             onClick={() => {
@@ -30,6 +31,16 @@ class Button extends Component<ButtonProps, ButtonState> {
         >
             { this.props.children}
         </button>
+    }
+
+    componentDidMount() {
+        console.log('componentDidMount')
+        setTimeout(() => {
+            this.setState({
+                alreadyClicked: false
+            })
+            console.log('rodou o timeout aqui')
+        }, 5000)
     }
 }
 
