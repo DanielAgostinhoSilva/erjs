@@ -1,25 +1,24 @@
 export type PostObject = {
-    title: string,
-    content: string
+  title: string
+  content: string
 }
-
 
 interface PostProps {
-    post: PostObject,
-    totalComments?: number
+  post: PostObject
+  totalComments?: number
 }
 
-export default function Post(props: PostProps) {
-    console.log('Post foi renderizado')
-    return <div>
-        <h1>{props.post.title}</h1>
-        <p>{props.post.content}</p>
-        {
-            props.totalComments &&
-            <span>
-                Comentarios: {props.totalComments}
-            </span>
-        }
+export default function Post (props: PostProps) {
+  console.log('Post foi renderizado')
+  return <div>
+    <h1>{props.post.title}</h1>
+    <p>{props.post.content}</p>
 
-    </div>
+    {
+      props.totalComments &&
+        <span>
+          Comentários: {props.totalComments}
+        </span>
+    }
+  </div>
 }

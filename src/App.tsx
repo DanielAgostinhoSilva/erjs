@@ -1,24 +1,23 @@
-import React, {useState} from 'react';
+import { useState } from 'react';
 import './App.css';
-import Post from "./components/Post";
-import Card from "./components/Card";
+import Card from './components/Card';
+import Post from './components/Post';
 
 function App() {
+  const [post] = useState({
+    title: 'Título maneiro',
+    content: 'Lorem Ipsum dolor sit amet'
+  })
 
-    const [post] = useState({
-        title: 'Titulo maneiro',
-        content: 'Lorem Ipsum dolor sit amet'
-    })
-
-    return (
-        <div className="App">
-            <header className="App-header">
-                <Card title={'card'}>
-                    <Post post={post} totalComments={12}/>
-                </Card>
-            </header>
-        </div>
-    );
+  return (
+    <div className="App">
+      <header className="App-header">
+        <Card align="left" title={"Card"}>
+          <Post post={post} totalComments={12} />
+        </Card>
+      </header>
+    </div>
+  );
 }
 
 export default App;

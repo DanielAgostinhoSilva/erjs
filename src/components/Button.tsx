@@ -1,49 +1,51 @@
-import {Component, PropsWithChildren} from "react";
+import { Component } from "react";
 
-type ButtonProps = PropsWithChildren<{
-    onClick?: () => any,
-    initializedClicked?: boolean
-}>
+interface ButtonProps {
+  onClick?: () => any
+  initializeClicked?: boolean
+}
 
 interface ButtonState {
-    alreadyClicked: boolean
+  alreadyClicked: boolean
+  timerId?: NodeJS.Timeout
 }
 
 class Button extends Component<ButtonProps, ButtonState> {
+  constructor (props: ButtonProps) {
+    super(props)
 
-    constructor(props: ButtonProps) {
-        super(props);
-        console.log('constructor')
-        this.state = {
-            alreadyClicked: !!props.initializedClicked
-        }
+    this.state = {
+      alreadyClicked: !!props.initializeClicked
     }
+  }
 
-    render() {
-        return <button
-            onClick={() => {
-                this.setState({alreadyClicked: true})
-                this.props.onClick?.call([])
-            }}
-            disabled={this.state.alreadyClicked}
-        >
-            { this.props.children}
-        </button>
-    }
+  componentDidMount () {
+    const timerId = setInterval(() => {
+      console.log('to rodando')
+    }, 5000)
+    this.setState({ timerId })
+  }
 
-    componentDidMount() {
-        console.log('componentDidMount')
-        setTimeout(() => {
-            this.setState({
-                alreadyClicked: false
-            })
-        }, 5000)
-    }
+  componentWillUnmount () {
+    console.log('Button será desmontado')
+    if (this.state.timerId)
+      clearInterval(this.state.timerId)
+  }
 
-    componentDidUpdate(prevProps: Readonly<ButtonProps>, prevState: Readonly<ButtonState>, snapshot?: any) {
-        console.log('anterior', prevState)
-        console.log('atual', this.state)
-    }
+  render () {
+    console.log('render')
+    return <button
+      onClick={() => {
+        this.setState({
+          alreadyClicked: true
+        })
+        this.props.onClick?.call([])
+      }}
+      disabled={this.state.alreadyClicked}
+    >
+      { this.props.children }
+    </button>
+  }
 }
 
 export default Button
