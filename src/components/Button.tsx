@@ -20,8 +20,6 @@ class Button extends Component<ButtonProps, ButtonState> {
     }
 
     render() {
-        console.log('render')
-
         return <button
             onClick={() => {
                 this.setState({alreadyClicked: true})
@@ -39,8 +37,12 @@ class Button extends Component<ButtonProps, ButtonState> {
             this.setState({
                 alreadyClicked: false
             })
-            console.log('rodou o timeout aqui')
         }, 5000)
+    }
+
+    componentDidUpdate(prevProps: Readonly<ButtonProps>, prevState: Readonly<ButtonState>, snapshot?: any) {
+        console.log('anterior', prevState)
+        console.log('atual', this.state)
     }
 }
 
