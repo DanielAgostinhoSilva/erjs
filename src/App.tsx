@@ -1,18 +1,11 @@
 import './App.css';
+import Form from "./components/Form";
 
 function App() {
-    function handleClick(e: React.MouseEvent<HTMLButtonElement>) {
-        e.preventDefault()
-    }
-
     return (
         <div className="App">
             <header className="App-header">
-                <form action={'/teste'}>
-                    <button onClick={handleClick}>
-                        Clique em mim
-                    </button>
-                </form>
+                <Form></Form>
             </header>
         </div>
     );
